@@ -1,0 +1,47 @@
+
+
+  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+   najitool GUI 0.3.0.0, najitool 0.8.3, libnaji 0.6.3
+  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  Credits: In order of contributing to project najitool
+
+
+NECDET COKYAZICI - England, London - cokyazici@yahoo.co.uk
+Main author, programmer, planner, designer, tester, debugger,
+and project manager. Wrote everything that someone else didn't write.
+
+
+SELCUK OZDOGAN - Turkey, Istanbul - selcuk198@yahoo.com
+Programmer. Wrote charbefr, charaftr.
+
+
+POLIKARP - Poland - polikarp@users.sourceforge.net
+Programmer. Wrote strbline, streline, chchar.
+
+
+SAMUEL CHANG - Australia - badp1ayer@hotmail.com
+Programmer. Wrote ttt, the fun Tic-Tac-Toe game with clever AI.
+
+
+ARKAINO (YEHRCL) - Argentina - arkaino@gmail.com
+Programmer. Wrote getlinks, find_basis,
+findi_line, chstr, skipstr, naji_mp3.c
+
+
+SACHIN MANE - America, Arizona - sachin.mane@gmail.com
+Programmer. Wrote cat_tail, cat_head, showline, bremline, eremline.
+
+
+MANUEL LE BOETTE - France - askoan@yahoo.fr
+Programmer. Wrote lensorts, lensortl.
+
+JEROME JACOVELLA-ST-LOUIS - Canada, Quebec - jerstlouis@gmail.com
+Programmer. Gave a lot of help and advice and bug fixes for naji_gui 0.3.0.0.
+He also designed the eC programming language and is currently developing the
+Ecere SDK since 1996, which is what naji_gui 0.3.0.0 and above use from 2011.
+
+The Ecere SDK is copyright Ecere corporation and the full source code is
+available at http://www.ecere.com/ licensed under the BSD license.
+
+The source code to najitool, libnaji, and naji_gui aka najitool GUI,
+Are in the Public Domain (non-copyrighted) 2003-2011.
