@@ -42,3 +42,7 @@ clean:
 	touch $(output)
 	rm -f $(objects)
 	rm -f $(output)
+	touch najitool.exe
+	rm -f najitool.exe
+	rm libnaji.a
+	rm libnaji.h
