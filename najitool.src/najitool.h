@@ -8,11 +8,11 @@
 /* najitool main header */
 
 /* this  .h  is a part of */
-/* najitool version 0.8.3 */
+/* najitool version 0.8.4 */
 
 /* from najitool version 0.2.0 and */
 /* above najitool will use libnaji */
-/* this version uses libnaji 0.6.3 */
+/* this version uses libnaji 0.6.4 */
 
 /* both najitool and libnaji */
 /* are public domain and are */
@@ -23,7 +23,7 @@
 
 #include "libnaji.h"
 
-#define NAJITOOL_MAX_COMMANDS 203
+#define NAJITOOL_MAX_COMMANDS 204
 
 extern const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS];
 

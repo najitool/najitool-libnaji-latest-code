@@ -5,8 +5,8 @@
 
            included in:
 
-          najitool 0.8.3
-           libnaji 0.6.3
+          najitool 0.8.4
+           libnaji 0.6.4
 	  naji_gui 0.3.0.0 FINAL
 
      Written by NECDET COKYAZICI
@@ -16,6 +16,12 @@
 
 
 New Commands todo:
+
+xcopyoff - copy excluding offset.
+
+xcoffset - cat excluding offset.
+
+everywrd - tell how many times every word is repeated.
 
 sp2ce2sp - changes spaces to the specified character, changes everything else to space character.
 

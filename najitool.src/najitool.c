@@ -5,11 +5,11 @@
 /* najitool main module */
 
 /* this  .c  is a part of */
-/* najitool version 0.8.3 */
+/* najitool version 0.8.4 */
 
 /* from najitool version 0.2.0 and */
 /* above najitool will use libnaji */
-/* this version uses libnaji 0.6.3 */
+/* this version uses libnaji 0.6.4 */
 
 /* both najitool and libnaji */
 /* are public domain and are */
@@ -242,6 +242,7 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "uudecode",
 "uuencode",
 "vowelwrd",
+"weakrypt",
 "wordline",
 "wordwrap",
 "wrdcount",
@@ -396,7 +397,7 @@ printf("      o o    T O O L       \n");
 
 
 printf("           __    |          ********************************************\n");
-printf("          /  \\   |               najitool 0.8.3 using libnaji 0.6.3     \n");
+printf("          /  \\   |               najitool 0.8.4 using libnaji 0.6.4     \n");
 printf("     /   _____|  | o \\            both written by NECDET COKYAZICI      \n");
 printf("    |    \\  o    |___|                   and contributors              \n");
 printf("     \\____\\                 ********************************************\n");
@@ -1065,6 +1066,15 @@ end_cmd()
 begin_cmd("n2str", 5)
 n2str(argv[2], argv[3], argv[4]);
 end_cmd()
+
+begin_cmd("weakrypt", 5)
+weakrypt(argv[2], argv[3], argv[4]);
+end_cmd()
+
+
+
+
+
 
 begin_cmd("printftx", 4)
 printftx(argv[2], argv[3]);

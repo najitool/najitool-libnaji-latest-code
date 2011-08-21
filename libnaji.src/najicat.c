@@ -5,7 +5,7 @@
 /* naji standard output (usually screen) functions */
 
 /* this  .c  file is a part */
-/* of libnaji version 0.6.3 */
+/* of libnaji version 0.6.4 */
 
 /* libnaji is based on   */
 /* the original najitool */
@@ -40,7 +40,7 @@ void naji_credits(void)
 {
 printf("\n");
 printf("  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
-printf("  najitool 0.8.2 and libnaji 0.6.2 Credits\n");
+printf("  najitool 0.8.4 and libnaji 0.6.4 Credits\n");
 printf("  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
 printf("  in order of joining the project najitool\n");
 printf("\n");

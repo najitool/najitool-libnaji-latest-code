@@ -1,2 +1,2 @@
-to build najitool 0.8.3 you need to build libnaji 0.6.3
+to build najitool 0.8.4 you need to build libnaji 0.6.4
 copy the file libnaji.h and libnaji.a here and type make

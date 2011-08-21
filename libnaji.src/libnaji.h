@@ -8,7 +8,7 @@
 /* libnaji header file */
 
 /* this  .h  file is a part */
-/* of libnaji version 0.6.3 */
+/* of libnaji version 0.6.4 */
 
 /* libnaji is based on   */
 /* the original najitool */
@@ -673,6 +673,7 @@ void unix2dos(char *namein, char *nameout);
 void uudecode(char *namein, char *nameout);
 void uuencode(char *namein, char *nameout);
 void vowelwrd(char *str);
+void weakrypt(const char *password, char *namein, char *nameout);
 void wipe_pwd(void);
 void wordline(char *namein, char *nameout);
 void wordlist(short a, short b, unsigned int size, char *nameout);

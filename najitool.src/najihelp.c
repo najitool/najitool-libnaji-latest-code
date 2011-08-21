@@ -5,11 +5,11 @@
 /* najitool help */
 
 /* this  .c  is a part of */
-/* najitool version 0.8.3 */
+/* najitool version 0.8.4 */
 
 /* from najitool version 0.2.0 and */
 /* above najitool will use libnaji */
-/* this version uses libnaji 0.6.3 */
+/* this version uses libnaji 0.6.4 */
 
 /* both najitool and libnaji */
 /* are public domain and are */
@@ -1577,6 +1577,13 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 "Flz"
 },
 
+{
+"weakrypt",
+"a weak file encryption function, the same function\n"
+"does both encryption and decryption with a password.",
+"<password> <input file> <output file>",
+"helloworld1234567890abc secret.zip secret.nwk"
+},
 
 {
 "wordline",
@@ -1722,7 +1729,7 @@ najout("HELP");
 fprintf(naji_output, "\n\n");
 
 fprintf(naji_output, "  =-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
-fprintf(naji_output, "  najitool 0.8.3 Help Document\n");
+fprintf(naji_output, "  najitool 0.8.4 Help Document\n");
 fprintf(naji_output, "  =-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n");
 
 fprintf(naji_output, "     http://najitool.sf.net/\n\n");
@@ -1779,7 +1786,7 @@ najout("help.htm");
 fprintf(naji_output, "<html>\n\n");
 
 
-fprintf(naji_output, "<head> <title>najitool 0.8.3 Help Document</title> </head>\n\n");
+fprintf(naji_output, "<head> <title>najitool 0.8.4 Help Document</title> </head>\n\n");
 
 fprintf(naji_output, "<body>\n\n");
 
@@ -1787,7 +1794,7 @@ fprintf(naji_output, "\n\n");
 
 fprintf(naji_output, "<center>\n\n");
 
-fprintf(naji_output, "<h2>najitool 0.8.3 Help Document</h2><p>\n\n");
+fprintf(naji_output, "<h2>najitool 0.8.4 Help Document</h2><p>\n\n");
 
 fprintf(naji_output, "<a href=\"http://najitool.sf.net/\">http://najitool.sf.net/</a><p>\n\n");
 

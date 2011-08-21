@@ -5,7 +5,7 @@
 /* naji encryption/decryption functions */
 
 /* this  .c  file is a part */
-/* of libnaji version 0.6.3 */
+/* of libnaji version 0.6.4 */
 
 /* libnaji is based on   */
 /* the original najitool */
@@ -19,8 +19,8 @@
 
 
 /*
-plans for version 2.0
-maybe make it just read a defined file like input.txt to  output.txt
+plans for najcrypt version 2.0
+maybe make it just read a defined file like input.txt to output.txt
 make the file bigger depending on the password size.
 do something else to the encrypted byte instead of bit flipping it
 such as changing certain bits instead depending on the password.
@@ -237,6 +237,7 @@ if (e_d == 'D' || e_d == 'd') naji_dec();
 wipe_pwd();
 }
 
+/* Bellow are seperate encryption function to the najcrypt functions. */
 
 void qcrypt(char *namein, char *nameout)
 {
@@ -253,3 +254,33 @@ najinclose();
 najoutclose();
 }
 
+void weakrypt(const char *password, char *namein, char *nameout)
+{
+int a;
+int pwdlen;
+
+najin(namein);
+najout(nameout);
+
+			pwdlen = strlen(password);
+
+			while (1)
+			{
+			a = getc(naji_input);
+
+			if (a == EOF)
+			break;
+
+			if (*password == '\0')
+			password -= pwdlen;
+
+			a ^= *password;
+
+			password++;
+
+			fputc(a, naji_output);
+            }
+
+najinclose();
+najoutclose();
+}
