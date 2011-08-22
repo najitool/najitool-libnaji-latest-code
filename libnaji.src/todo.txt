@@ -23,8 +23,6 @@ xcoffset - cat excluding offset.
 
 everywrd - tell how many times every word is repeated.
 
-sp2ce2sp - changes spaces to the specified character, changes everything else to space character.
-
 chalphac - changes all small and capital letters into the specified character.
 
 chsmallc - changes all small letters into the specified character.

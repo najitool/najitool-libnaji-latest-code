@@ -635,9 +635,24 @@ void skppunct(char *namein, char *nameout);
 void skpspace(char *namein, char *nameout);
 void skpupper(char *namein, char *nameout);
 void skpxdigt(char *namein, char *nameout);
+
+/*
+
 void sortfirst(char *namein, char *nameout);
 void sortlast(char *namein, char *nameout);
 void sortlenl(char *namein, char *nameout);
+
+These functions are not written yet,
+what are the protoypes doing here?
+And how long have they been here? :|
+
+lensortl and lensorts where probably
+written instead of sortlenl
+
+*/
+
+void sp2ce2sp(char c, char *namein, char *nameout);
+void sp2re2sp(char *namein, char *nameout);
 void sreverse(char *str);
 void sstrfile(unsigned long int strictsize, char *string);
 void stolower(char *str);

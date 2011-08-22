@@ -1425,6 +1425,22 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 },
 
 {
+"sp2ce2sp",
+"changes spaces to the specified character,\n"
+"changes everything else to space character.",
+"<character> <input file> <output file>",
+"X todo.txt xoxo.txt"
+},
+
+{
+"sp2re2sp",
+"changes spaces to a random text character,\n"
+"changes everything else to space character.",
+"<input file> <output file>",
+"todo.txt roro.txt"
+},
+
+{
 "strachar",
 "makes a copy of a file with the specified text after each character.",
 "<text> <input file> <output file>",

@@ -221,6 +221,8 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "skpspace",
 "skpupper",
 "skpxdigt",
+"sp2ce2sp",
+"sp2re2sp",
 "strachar",
 "strbchar",
 "strbline",
@@ -1071,7 +1073,9 @@ begin_cmd("weakrypt", 5)
 weakrypt(argv[2], argv[3], argv[4]);
 end_cmd()
 
-
+begin_cmd("sp2ce2sp", 5)
+sp2ce2sp(argv[2][0], argv[3], argv[4]);
+end_cmd()
 
 
 
@@ -1494,6 +1498,13 @@ end_cmd()
 begin_cmd("charsort", 4)
 charsort(argv[2], argv[3]);
 end_cmd()
+
+begin_cmd("sp2re2sp", 4)
+sp2re2sp(argv[2], argv[3]);
+end_cmd()
+
+
+
 
 
 
