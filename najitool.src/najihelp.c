@@ -706,6 +706,20 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 },
 
 {
+"istrael",
+"inserts string at every line at the specified position.",
+"<text string> <position> <input file> <output file>",
+"hello 0 todo.txt hitodo.txt"
+},
+
+{
+"istreml",
+"inserts string at every empty line.",
+"<text string> <input file> <output file>",
+"hello todo.txt hitodo.txt"
+},
+
+{
 "kbsplit",
 "splits the file you specify into the size of pieces you specify in kilobytes.\n"
 "The output file is the original filename with numbered extensions e.g.\n"

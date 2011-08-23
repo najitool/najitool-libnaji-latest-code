@@ -131,6 +131,8 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "html2txt",
 "htmlfast",
 "htmlhelp",
+"istrael",
+"istreml",
 "kbsplit",
 "kitten",
 "lcharvar",
@@ -926,6 +928,13 @@ size2 = strtoul(argv[4], &end, 0);
 copyoffs(argv[2], size, size2, argv[5]);
 end_cmd()
 
+begin_cmd("istrael", 6)
+istrael(argv[2], atoi(argv[3]), argv[4], argv[5]);
+end_cmd()
+
+
+
+
 begin_cmd("bremline", 5)
 bremline(argv[2], argv[3], argv[4]);
 end_cmd()
@@ -1077,6 +1086,9 @@ begin_cmd("sp2ce2sp", 5)
 sp2ce2sp(argv[2][0], argv[3], argv[4]);
 end_cmd()
 
+begin_cmd("istreml", 5)
+istreml(argv[2], argv[3], argv[4]);
+end_cmd()
 
 
 

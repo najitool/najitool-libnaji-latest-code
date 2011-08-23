@@ -15,7 +15,18 @@
 
 
 
+
 New Commands todo:
+
+delafel - delete everything after the specified line position in every line.
+
+delbfel - delete everything before the specified line position in every line.
+
+addline - add new line with the specified text at the specified line pos.
+
+replacel - replaces line with the specified text at the specified line pos.
+
+removel - remove specified line.
 
 xcopyoff - copy excluding offset.
 
@@ -61,7 +72,7 @@ lcbinc   - changes all binary characters to the specified character at number of
 
 stairway - makes a stairway out of the characters of the files.
 
-istrael  - insert string at every line at the specified position.
+
 
 sortlb   - sort lines alphabetically backwards, z first
 

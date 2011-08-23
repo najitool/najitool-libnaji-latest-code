@@ -432,6 +432,8 @@ void inches_to_meters(void);
 void inches_to_miles(void);
 void inches_to_mm(void);
 void inches_to_yards(void);
+void istrael(char *str, int pos, char *namein, char *nameout);
+void istreml(char *str, char *namein, char *nameout);
 void kbsplit(char *namein, unsigned long peice_size);
 void kiterr(void);
 void kitten(char *namein);

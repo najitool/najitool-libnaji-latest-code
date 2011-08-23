@@ -5,7 +5,7 @@
 /* naji file format functions */
 
 /* this  .c  file is a part */
-/* of libnaji version 0.6.3 */
+/* of libnaji version 0.6.4 */
 
 /* libnaji is based on   */
 /* the original najitool */
@@ -1669,6 +1669,238 @@ najout(nameout);
 
   	}
 	
+
+
+
+najinclose();
+najoutclose();
+}
+
+
+void istrael(char *str, int pos, char *namein, char *nameout)
+{
+int a;
+int b;
+int isdos = NAJI_FALSE;
+int i = 0;
+
+najin(namein);
+najout(nameout);
+
+
+if (pos == 0)
+{
+
+	while (1)
+	{
+	a = fgetc(naji_input);
+	if (a == EOF)
+	break;
+
+	if (a == '\r')
+	{
+	isdos = NAJI_TRUE;
+	break;
+	}
+
+	}
+
+	najinclose();
+	najin(namein);
+
+	a = fgetc(naji_input);
+
+	if (a != EOF)
+	{
+
+		if (a == '\n')
+		{
+		if (isdos == NAJI_TRUE)
+		fprintf(naji_output, "%s\n\r", str);
+	
+		else 
+		fprintf(naji_output, "%s\n", str);
+		}
+
+	}
+	else
+	{
+	najinclose();
+	najoutclose();
+	return;
+	}
+
+
+	b = fgetc(naji_input);
+
+	if (b != EOF)
+	{
+
+		if (b == '\n')
+		{
+		if (isdos == NAJI_TRUE)
+		fprintf(naji_output, "%s\n\r", str);
+	
+		else 
+		fprintf(naji_output, "%s\n", str);
+		}
+
+	}
+	else
+	{
+	najinclose();
+	najoutclose();
+	return;
+	}
+
+najinclose();
+najin(namein);
+}
+
+
+  while (1)
+  {
+  a = fgetc(naji_input);
+
+  if (a == EOF)
+  break;
+  
+  fputc(a, naji_output);
+
+  i++;
+
+  if (a == '\n')
+  i=0;
+   
+  if (i == pos)
+  fputs(str, naji_output);
+  }
+
+najinclose();
+najoutclose();
+}
+
+
+void istreml(char *str, char *namein, char *nameout)
+{
+int a;
+int b;
+int isdos = NAJI_FALSE;
+
+najin(namein);
+najout(nameout);
+
+
+while (1)
+{
+a = fgetc(naji_input);
+if (a == EOF)
+break;
+
+if (a == '\r')
+{
+isdos = NAJI_TRUE;
+break;
+}
+
+}
+
+najinclose();
+najin(namein);
+
+a = fgetc(naji_input);
+
+if (a != EOF)
+{
+
+if (a == '\n')
+{
+	if (isdos == NAJI_TRUE)
+	fprintf(naji_output, "\n\r%s\n\r", str);
+	
+	else 
+	fprintf(naji_output, "\n%s\n", str);
+}
+
+}
+else
+{
+najinclose();
+najoutclose();
+return;
+}
+
+
+b = fgetc(naji_input);
+
+if (b != EOF)
+{
+
+if (b == '\n')
+{
+	if (isdos == NAJI_TRUE)
+	fprintf(naji_output, "\n\r%s\n\r", str);
+	
+	else 
+	fprintf(naji_output, "\n%s\n", str);
+}
+
+}
+else
+{
+najinclose();
+najoutclose();
+return;
+}
+
+najinclose();
+najin(namein);
+
+
+	while (1)
+	{
+	a = fgetc(naji_input);
+
+	if (a == EOF)
+	break;
+  
+		if (a == '\n')
+		{
+			b = fgetc(naji_input);
+
+			if (b == '\r')
+			fprintf(naji_output, "\n\r%s\n\r", str);
+
+			else if (b == '\n')
+			fprintf(naji_output, "\n%s\n", str);
+ 
+			else if (b == EOF)
+			{
+			fputc(a, naji_output);
+
+				if (isdos == NAJI_TRUE)
+				fprintf(naji_output, "\n\r%s\n\r", str);
+	
+				else 
+				fprintf(naji_output, "\n%s\n", str);
+
+			break;
+			}
+ 
+			else
+			{
+			fputc(a, naji_output);
+			fputc(b, naji_output);
+			}
+
+		}
+		
+		else
+		fputc(a, naji_output);
+
+  }
+
+
 
 
 
