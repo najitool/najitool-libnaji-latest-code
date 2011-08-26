@@ -26,8 +26,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 #include <errno.h>
-
 
 /* Begin MP3 Code, Written By ARKAINO, formally known as YEHRCL */
 
@@ -193,7 +193,13 @@ typedef signed char schar;
 typedef signed int sint;
 typedef signed long slong;
 
+/*
 #define square_root(a) ((a) * (a))
+
+what the heck was i thinking lol
+this isn't how square root works.
+*/
+
 #define naji_max(a,b) ( ( (a) > (b) ) ? (a):(b) )
 #define naji_min(a,b) ( ( (a) < (b) ) ? (a):(b) )
 
@@ -281,11 +287,17 @@ long najin2size(void);
 long najinsize(void);
 long najout2size(void);
 long najoutsize(void);
+
 uchar uc_rand_range(uchar start, uchar end);
 uint ui_rand_range(uint start, uint end);
 ulong ul_rand_range (ulong start, ulong end);
+
 unsigned char ascii_to_ebcdic_char(const unsigned char a);
 unsigned char ebcdic_to_ascii_char(const unsigned char a);
+
+unsigned long howl(char *namein);
+unsigned long longl(char *namein);
+
 void _8bit256(char *nameout, unsigned long rep);
 void _bigascii(char *string, FILE *stream);
 void add_entry(char *entry);
@@ -423,6 +435,7 @@ void hexierr(void);
 void hilist(char *namein, char *nameout);
 void hmaker(char *namein);
 void hmakerf(char *namein, char *nameout);
+void howline(char *namein);
 void html2txt(char *namein, char *nameout);
 void htmlfast(char *namein, char *nameout);
 void inches_to_cm(void);
@@ -453,6 +466,7 @@ void length(void);
 void lensort_basis(char whichone, char *namein, char *nameout);
 void lensortl(char *namein, char *nameout);
 void lensorts(char *namein, char *nameout);
+void lineback(char *namein);
 void linesnip(int bytes, char *namein, char *nameout);
 void listdigt(unsigned int size, char *nameout);
 void listlowr(unsigned int size, char *nameout);
@@ -545,6 +559,11 @@ void naji_j(int a, FILE *stream);
 void naji_k(int a, FILE *stream);
 void naji_l(int a, FILE *stream);
 void naji_license(void);
+char **naji_lines_alloc(unsigned long howmany, unsigned long howlong);
+void naji_lines_free(char **buffer, unsigned long howmany);
+void naji_lines_load(char *namein, char **buffer, unsigned long howmany, unsigned long howlong);
+void naji_lines_backwards_print(char **buffer, unsigned long howmany);
+void naji_lines_print(char **buffer, unsigned long howmany);
 void naji_m(int a, FILE *stream);
 void naji_n(int a, FILE *stream);
 void naji_o(int a, FILE *stream);
@@ -572,6 +591,7 @@ void najout2(char *nameout2);
 void najout2close(void);
 void najoutclose(void);
 void nextpage(void);
+void longline(char *namein);
 void numlines(char *namein, char *nameout);
 void onlalnum(char *namein, char *nameout);
 void onlalpha(char *namein, char *nameout);
@@ -637,22 +657,10 @@ void skppunct(char *namein, char *nameout);
 void skpspace(char *namein, char *nameout);
 void skpupper(char *namein, char *nameout);
 void skpxdigt(char *namein, char *nameout);
-
-/*
-
-void sortfirst(char *namein, char *nameout);
-void sortlast(char *namein, char *nameout);
-void sortlenl(char *namein, char *nameout);
-
-These functions are not written yet,
-what are the protoypes doing here?
-And how long have they been here? :|
-
-lensortl and lensorts where probably
-written instead of sortlenl
-
-*/
-
+int  sortcomp(const void *a, const void *b);
+void sort(char *namein);
+void sortlast(char *namein);
+void sort_basis(char *namein);
 void sp2ce2sp(char c, char *namein, char *nameout);
 void sp2re2sp(char *namein, char *nameout);
 void sreverse(char *str);

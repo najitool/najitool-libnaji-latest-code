@@ -9,3 +9,8 @@ added sp2ce2sp - NECDET COKYAZICI
 added sp2re2sp - NECDET COKYAZICI
 added istrael  - NECDET COKYAZICI
 added istreml  - NECDET COKYAZICI
+added sort     - NECDET COKYAZICI
+added sortlast - NECDET COKYAZICI
+added lineback - NECDET COKYAZICI
+added longline - NECDET COKYAZICI
+added howline  - NECDET COKYAZICI

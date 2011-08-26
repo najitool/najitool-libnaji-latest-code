@@ -22,7 +22,7 @@ You may find the latest version of najitool at the homepage:
 http://najitool.sf.net/
 
 You may also find the latest work in progress code at:
-http://www.github.com/cokyazici
+http://github.com/najitool
 
 
 How to use najitool - type the following for help:

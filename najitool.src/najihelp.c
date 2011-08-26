@@ -678,6 +678,14 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 },
 
 {
+"howline",
+"counts how many lines there are in a text file\n"
+"and and displays the number to the screen.",
+"<input text file>",
+"lafterl.txt"
+},
+
+{
 "html_db",
 "makes a HTML file with a list of people and their details.",
 "",
@@ -808,6 +816,13 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 "4 numbered.c filtered.c"
 },
 
+{
+"lineback",
+"displays lines in a text file backwards,\n"
+"starting from the last line to the first line",
+"<input text file>",
+"dramatic.txt"
+},
 
 {
 "listdigt",
@@ -838,7 +853,6 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 },
 
 
-
 {
 "listuppr",
 "makes a text file with every possible combinations\n"
@@ -848,6 +862,13 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 "6 A-Z_6.txt"
 },
 
+{
+"longline",
+"finds the longest line in a text file\n"
+"and displays the number to the screen",
+"<input text file>",
+"lafterl.txt"
+},
 
 {
 "makarray",
@@ -1436,6 +1457,20 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 "hexadecimal digits, this includes 0-9 a-f A-F.",
 "<input file> <output file>",
 "a.out filtered.bin"
+},
+
+{
+"sort",
+"sorts a text file ordering each line according to ASCII value.",
+"<input text file>",
+"unsorted.txt > sorted.txt"
+},
+
+{
+"sortlast",
+"sorts a text file ordering each line according to ASCII value - backwards.",
+"<input text file>",
+"unsorted.txt > sorted.txt"
 },
 
 {

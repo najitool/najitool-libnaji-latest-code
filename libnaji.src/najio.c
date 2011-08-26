@@ -6,7 +6,7 @@
 /* used by najitool and libnaji */
 
 /* this  .c  file is a part */
-/* of libnaji version 0.6.3 */
+/* of libnaji version 0.6.4 */
 
 /* libnaji is based on   */
 /* the original najitool */
@@ -79,6 +79,22 @@ void najin(char *namein)
          because it falsely reports large files as being empty
 */
 }
+
+
+void najintext(char *namein)
+{
+
+    naji_input = fopen(namein, "rt");
+
+    if (naji_input == NULL)
+    {
+    fprintf(stderr, "\n\nError, cannot open input file: %s", namein);
+    perror(" "); fprintf(stderr, "\n\n");
+    exit(2);
+    }
+}
+
+
 
 
 void najed(char *named)
@@ -279,8 +295,6 @@ void najoutclose(void)  { fclose(naji_output);  }
 void najout2close(void) { fclose(naji_output2); }
 void najedclose(void)   { fclose(naji_edit);    }
 
-/* I should probably move these to another  */
-/* .c file, because it's getting big again  */
 void copyfile(char *namein, char *nameout)
 {
 int a=0;
@@ -409,3 +423,226 @@ void nextpage(void)
 printf("\n- Press ENTER for the next page...\n");
 getchar();
 }
+
+
+/* finds the longest line in a text file and returns the result */
+
+unsigned long longl(char *namein)
+{
+int a;
+
+unsigned long length = 0;
+unsigned long longest = 0;
+
+najin(namein);
+
+	while (1)
+	{
+	
+		a = getc(naji_input);
+
+		if (a == EOF)
+		break;
+
+		if (a == '\n')
+		{
+			if (length > longest)
+			longest = length;
+		
+		length=0;
+		}
+		else length++;
+
+	}
+
+najinclose();
+
+return longest;
+}
+
+
+void longline(char *namein)
+{
+printf("\n\nLongest line is: %lu\n\n", longl(namein));
+}
+
+
+/* counts how many lines there are in a text file and returns the result */
+
+unsigned long howl(char *namein)
+{
+int a;
+
+unsigned long lines = 0;
+
+najin(namein);
+
+	while (1)
+	{
+	
+		a = getc(naji_input);
+
+		if (a == EOF)
+		break;
+
+		if (a == '\n')
+		lines++;
+
+	}
+
+najinclose();
+
+return lines;
+}
+
+
+void howline(char *namein)
+{
+printf("\n\nTotal number of lines is: %lu\n\n", howl(namein));
+}
+
+
+char **naji_lines_alloc(unsigned long howmany, unsigned long howlong)
+{
+char **buffer = NULL;
+unsigned long i;
+
+	buffer = (char **) malloc(howmany * sizeof(char *));
+
+	exitnull(buffer);
+
+	for (i=0; i<howmany; i++)
+	{
+	buffer[i] = (char *) malloc(howlong * sizeof(char) + 3);
+	exitnull(buffer[i]);
+	}
+
+return buffer;
+}
+
+
+void naji_lines_free(char **buffer, unsigned long howmany)
+{
+unsigned long i;
+
+	for (i=0; i<howmany; i++)
+	free(buffer[i]);
+
+	free(buffer);
+	
+	buffer = NULL;
+}
+
+
+void naji_lines_load(char *namein, char **buffer, unsigned long howmany, unsigned long howlong)
+{
+int a;
+unsigned long i = 0;
+unsigned long c = 0;
+
+	najintext(namein);
+
+	while (1)
+	{
+		a = fgetc(naji_input);
+	
+		if (a == EOF)
+		{
+		buffer[i][c] = '\0';
+		break;
+		}
+
+		else if (a == '\n')
+		{
+		buffer[i][c] = '\n';
+		c++;
+		
+		buffer[i][c] = '\0';
+		c++;
+		
+		i++;
+	    
+		c = 0;
+		
+		if (i >= howmany)
+		break;
+		}
+	
+		else if (a == '\r')
+		;
+
+		else
+		{
+		buffer[i][c] = a;
+		c++;
+		
+		if (c == howlong)
+		{
+		buffer[i][c] = '\0';
+		break;
+		}
+		
+		
+		}
+	
+	}
+	
+
+	najinclose();
+
+}
+
+
+void naji_lines_backwards_print(char **buffer, unsigned long howmany)
+{
+signed long backwards_howmany = 0;
+signed long backwards_i = 0;
+
+	backwards_howmany = (signed long) howmany;
+
+	backwards_howmany--;
+
+	if (strlen(buffer[backwards_howmany]) > 0)
+	if (strchr(buffer[backwards_howmany], '\n') == NULL)
+	{
+	printf("%s\n", buffer[backwards_howmany]);
+	backwards_howmany--;
+	}
+  
+	for (backwards_i = backwards_howmany; backwards_i >= 0; backwards_i--)
+	printf("%s", buffer[backwards_i]);
+
+}
+
+
+void naji_lines_print(char **buffer, unsigned long howmany)
+{
+unsigned long i;
+
+	for (i=0; i<howmany; i++)
+	printf("%s", buffer[i]);
+
+}
+
+
+void lineback(char *namein)
+{
+char **buffer = NULL;
+unsigned long howmany;
+unsigned long howlong;
+
+	howmany = howl(namein);
+	howlong = longl(namein);
+	
+	howlong += 3;
+	howmany ++;
+	
+	buffer = naji_lines_alloc(howmany, howlong);
+
+	naji_lines_load(namein, buffer, howmany, howlong);
+
+	naji_lines_backwards_print(buffer, howmany);
+
+	naji_lines_free(buffer, howmany);
+}
+

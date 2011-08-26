@@ -5,7 +5,7 @@
 /* naji sort functions */
 
 /* this  .c  file is a part */
-/* of libnaji version 0.6.3 */
+/* of libnaji version 0.6.4 */
 
 /* libnaji is based on   */
 /* the original najitool */
@@ -652,3 +652,58 @@ long filecount=0;
         }
 
 }
+
+
+
+
+
+
+/* function pointer declaration */
+void (*sort_print_global_function_pointer)(char **buffer, unsigned long howmany);
+
+
+int sortcomp(const void *a, const void *b)
+{
+const char **va = (void *) a;
+const char **vb = (void *) b;
+return strcmp(*va, *vb);
+}
+
+
+void sort_basis(char *namein)
+{
+char **buffer = NULL;
+unsigned long howmany;
+unsigned long howlong;
+
+	howmany = howl(namein);
+	howlong = longl(namein);
+	
+	howlong += 3;
+	howmany ++;
+	
+	buffer = naji_lines_alloc(howmany, howlong);
+
+	naji_lines_load(namein, buffer, howmany, howlong);
+
+	qsort( (void*) buffer, howmany, sizeof(buffer[0]), sortcomp);
+
+	(*sort_print_global_function_pointer)(buffer, howmany);
+
+	naji_lines_free(buffer, howmany);
+}
+
+
+void sort(char *namein)
+{
+(sort_print_global_function_pointer) = naji_lines_print;
+sort_basis(namein);
+}
+
+
+void sortlast(char *namein)
+{
+(sort_print_global_function_pointer) = naji_lines_backwards_print;
+sort_basis(namein);
+}
+

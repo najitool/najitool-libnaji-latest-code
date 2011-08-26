@@ -114,10 +114,10 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "fswpcase",
 "ftothe",
 "gbsplit",
+"gdivide",
 "genhelp",
 "genlic",
 "getlinks",
-"gdivide",
 "gigabyte",
 "gminus",
 "gplus",
@@ -127,8 +127,9 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "hilist",
 "hmaker",
 "hmakerf",
-"html_db",
+"howline",
 "html2txt",
+"html_db",
 "htmlfast",
 "htmlhelp",
 "istrael",
@@ -143,11 +144,13 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "lensortl",
 "lensorts",
 "license",
+"lineback",
 "linesnip",
 "listdigt",
 "listlowr",
 "listprnt",
 "listuppr",
+"longline",
 "makarray",
 "mathgame",
 "mbsplit",
@@ -223,6 +226,8 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "skpspace",
 "skpupper",
 "skpxdigt",
+"sort",
+"sortlast",
 "sp2ce2sp",
 "sp2re2sp",
 "strachar",
@@ -239,9 +244,9 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "ttt",
 "turnum",
 "txt2html",
-"unihtml",
 "unajirle",
 "unblanka",
+"unihtml",
 "unix2dos",
 "uudecode",
 "uuencode",
@@ -274,6 +279,7 @@ void forhelp(void)
 void najitool_check_command(char *cmd)
 {
 int i;
+
 
  for (i=0; i<NAJITOOL_MAX_COMMANDS; i++)
  {
@@ -1638,6 +1644,26 @@ end_cmd()
 
 begin_cmd("gigabyte", 3)
 gigabyte(strtoul(argv[2], NULL, 0));
+end_cmd()
+
+begin_cmd("sort", 3)
+sort(argv[2]);
+end_cmd()
+
+begin_cmd("sortlast", 3)
+sortlast(argv[2]);
+end_cmd()
+
+begin_cmd("lineback", 3)
+lineback(argv[2]);
+end_cmd()
+
+begin_cmd("longline", 3)
+longline(argv[2]);
+end_cmd()
+
+begin_cmd("howline", 3)
+howline(argv[2]);
 end_cmd()
 
 

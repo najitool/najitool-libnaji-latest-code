@@ -14,9 +14,20 @@
        http://najitool.sf.net/
 
 
+najitool: search najitool valid command array to see if an
+incomplete invalid command is a part of an existing valid
+command and display them as suggestions.
 
 
 New Commands todo:
+
+cmpusort - compare two files and make a list of numbers on how to unsort them
+
+unsort - unsort a file
+
+deldbll - delete double lines
+
+delxtral - delete extra lines
 
 delafel - delete everything after the specified line position in every line.
 
@@ -72,11 +83,6 @@ lcbinc   - changes all binary characters to the specified character at number of
 
 stairway - makes a stairway out of the characters of the files.
 
-
-
-sortlb   - sort lines alphabetically backwards, z first
-
-sortlf   - sort lines alphabetically forward, a first
 
 
 
