@@ -202,6 +202,7 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "rndbfile",
 "rndbsout",
 "rndffill",
+"rndlines",
 "rndtfile",
 "rndtsout",
 "rrrchars",
@@ -1666,6 +1667,9 @@ begin_cmd("howline", 3)
 howline(argv[2]);
 end_cmd()
 
+begin_cmd("rndlines", 3)
+rndlines(argv[2]);
+end_cmd()
 
 
 

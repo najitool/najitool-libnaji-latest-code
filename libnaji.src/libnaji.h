@@ -154,9 +154,13 @@ void mp3editag (char const * name, char* const* args, int const numarg);
 
 
 
-
+#ifndef naji_tolower
 #define naji_tolower(a) if ( ( (a) >= 'A') && ( (a) <= 'Z') ) a += 32;
+#endif
+
+#ifndef naji_toupper
 #define naji_toupper(a) if ( ( (a) >= 'a') && ( (a) <= 'z') ) a -= 32;
+#endif
 
 /* the random number initilizer macro */
 /* using this before using the rndrange() */
@@ -164,69 +168,163 @@ void mp3editag (char const * name, char* const* args, int const numarg);
 /* makes rndrange produce a lot better */
 /* random numbers, you only need to use */
 /* it once.  */
+
+#ifndef rndinit
 #define rndinit() srand(time(NULL))
+#endif
 
+#ifndef rndrange
 #define rndrange(start, end) ( rand() % ( (end) + (start) ) )
+#endif
 
-
+#ifndef BYTE
 #define BYTE unsigned char
+#endif
+
+#ifndef WORD
 #define WORD unsigned short
+#endif
+
+#ifndef DWORD
 #define DWORD unsigned long
+#endif
 
+#ifndef UCHAR
 #define UCHAR unsigned char
-#define UINT unsigned int
-#define ULONG unsigned long
+#endif
 
+#ifndef SHORT
+#define USHORT unsigned short
+#endif
+
+#ifndef UINT
+#define UINT unsigned int
+#endif
+
+#ifndef ULONG
+#define ULONG unsigned long
+#endif
+
+#ifndef SCHAR
 #define SCHAR signed char
+#endif
+
+#ifndef SSHORT
+#define SSHORT signed short
+#endif
+
+#ifndef SINT
 #define SINT signed int
+#endif
+
+#ifndef SLONG
 #define SLONG signed long
+#endif
+
+#ifndef FLOAT
+#define FLOAT float
+#endif
+
+#ifndef DOUBLE
+#define DOUBLE double
+#endif
 
 typedef unsigned char byte;
 typedef unsigned short word;
 typedef unsigned long dword;
 
 typedef unsigned char uchar;
+typedef unsigned short ushort;
 typedef unsigned int uint;
 typedef unsigned long ulong;
 
 typedef signed char schar;
+typedef signed short sshort;
 typedef signed int sint;
 typedef signed long slong;
 
-/*
-#define square_root(a) ((a) * (a))
-
-what the heck was i thinking lol
-this isn't how square root works.
-*/
-
+#ifndef naji_max
 #define naji_max(a,b) ( ( (a) > (b) ) ? (a):(b) )
+#endif
+
+#ifndef naji_min
 #define naji_min(a,b) ( ( (a) < (b) ) ? (a):(b) )
+#endif
 
 #ifndef PI
 #define PI 3.14159265358979323846
 #endif
 
-#define newint(amount)  ( (int*) ( malloc(amount) ) )
-#define newchar(amount) ( (char*) ( malloc(amount) ) ) 
-#define newlong(amount) ( (long*) ( malloc(amount) ) )
+#ifndef najinew
+#define najinew(Type, HowMany) (Type *) malloc(HowMany * sizeof(Type));
+#endif
 
+#ifndef newchar
+#define newchar(amount)  najinew(char, amount);
+#endif
+
+#ifndef newshort
+#define newshort(amount) najinew(short, amount);
+#endif
+
+#ifndef newint
+#define newint(amount)   najinew(int, amount);
+#endif
+
+#ifndef newlong
+#define newlong(amount)  najinew(long, amount);
+#endif
+
+#ifndef newuchar
+#define newuchar(amount) najinew(UCHAR, amount);
+#endif
+
+#ifndef newshort
+#define newshort(amount) najinew(USHORT, amount);
+#endif
+
+#ifndef newuint
+#define newuint(amount)  najinew(UINT, amount);
+#endif
+
+#ifndef newulong
+#define newulong(amount) najinew(ULONG, amount);
+#endif
+
+#ifndef newfloat
+#define newfloat(amount)  najinew(FLOAT, amount);
+#endif
+
+#ifndef newdouble
+#define newdouble(amount) najinew(DOUBLE amount);
+#endif
+
+#ifndef exitnull
 #define exitnull(item) \
 if ( ( (item) == NULL ) ) \
 {\
 fprintf(stderr, "\n\nNULL pointer error\n\n"); exit(8);\
 }
+#endif
 
-
-
+#ifndef loop
 #define loop while(1)
+#endif
+
+#ifndef endloop
 #define endloop break
+#endif
 
 /* my version of the FALSE, TRUE defines */
 /* to avoid clashes with other libraries and programs */
 
+#ifndef NAJI_FALSE
 #define NAJI_FALSE 0
+#endif
+
+#ifndef NAJI_TRUE
 #define NAJI_TRUE  1
+#endif
 
 extern FILE* naji_input;
 extern FILE* naji_input2;
@@ -564,6 +662,7 @@ void naji_lines_free(char **buffer, unsigned long howmany);
 void naji_lines_load(char *namein, char **buffer, unsigned long howmany, unsigned long howlong);
 void naji_lines_backwards_print(char **buffer, unsigned long howmany);
 void naji_lines_print(char **buffer, unsigned long howmany);
+void naji_lines_random_print(char **buffer, int howmany);
 void naji_m(int a, FILE *stream);
 void naji_n(int a, FILE *stream);
 void naji_o(int a, FILE *stream);
@@ -580,10 +679,12 @@ void naji_w(int a, FILE *stream);
 void naji_x(int a, FILE *stream);
 void naji_y(int a, FILE *stream);
 void naji_z(int a, FILE *stream);
+void najifgets(char *buf, int size, FILE *input);
 void najin(char *namein);
 void najin2(char *namein2);
 void najin2close(void);
 void najinclose(void);
+void najintext(char *namein);
 void najirle(char *namein, char *nameout);
 void najisum(char *namein);
 void najout(char *nameout);
@@ -622,11 +723,13 @@ void repcatpp(char *namein, unsigned int start);
 void repchar(char *namein, char *nameout, unsigned int repeat);
 void repcharp(char *namein, char *nameout, unsigned int start);
 void reperr(unsigned int repeat);
+int return_random(int max);
 void revcat(char *namein);
 void revlines(char *namein, char *nameout);
 void rndbfile(char *nameout, unsigned long int size);
 void rndbsout(unsigned long int size);
 void rndffill(char *named);
+void rndlines(char *namein);
 void rndtfile(char *nameout, unsigned long int size);
 void rndtsout(unsigned long int size);
 void rngtotal_test();
@@ -642,6 +745,7 @@ void sflpcase(char *str);
 void show_16_bit_bin(int num);
 void show_8_bit_bin(char num);
 void showline(char *namein, unsigned long line);
+void shuffle_int_array(int *array, int size);
 void skipcat(char *namein, char *toskip);
 void skipchar(char *namein, char *nameout, char *toskip);
 void skiperr(char *toskip);

@@ -50,7 +50,7 @@ return size;
 
 void najin(char *namein)
 {
-/* long filesize = 0; */
+int a;
 
     naji_input = fopen(namein, "rb");
 
@@ -61,28 +61,38 @@ void najin(char *namein)
     exit(2);
     }
 
-
-/*
-    filesize = najinsize();
-
-
-    if (filesize == 0)
+	
+	a = fgetc(naji_input);
+	
+	if (a == EOF)
     {
     fprintf(stderr, "\n\nError, empty file.\n\n");
     exit(1);
     }
+	else
+	{
+		najinclose();
+		
+		naji_input = fopen(namein, "rb");
 
-*/
+		if (naji_input == NULL)
+		{
+		fprintf(stderr, "\n\nError, cannot open input file: %s", namein);
+		perror(" "); fprintf(stderr, "\n\n");
+		exit(2);
+		}
+	
+	}
 
-
-/* NOTE: empty file checks have been disabled in this version
-         because it falsely reports large files as being empty
-*/
+	
+	
+	
 }
 
 
 void najintext(char *namein)
 {
+int a;
 
     naji_input = fopen(namein, "rt");
 
@@ -92,6 +102,32 @@ void najintext(char *namein)
     perror(" "); fprintf(stderr, "\n\n");
     exit(2);
     }
+
+	
+	a = fgetc(naji_input);
+	if (a == EOF)
+    {
+    fprintf(stderr, "\n\nError, empty file.\n\n");
+    exit(1);
+    }
+	else
+	{
+		najinclose();
+		
+		naji_input = fopen(namein, "rb");
+
+		if (naji_input == NULL)
+		{
+		fprintf(stderr, "\n\nError, cannot open input file: %s", namein);
+		perror(" "); fprintf(stderr, "\n\n");
+		exit(2);
+		}
+	
+	}
+
+	
+	
+	
 }
 
 
@@ -113,35 +149,44 @@ naji_edit = fopen(named, "r+b");
 
 void najin2(char *namein2)
 {
-/* long filesize = 0; */
-
+int a;
 
     naji_input2 = fopen(namein2, "rb");
 
     if (naji_input2 == NULL)
     {
     fprintf(stderr, "\n\nError, cannot open second input file: %s", namein2);
-    perror(" ");
-    fprintf(stderr, "\n\n");
-    exit(5);
+    perror(" "); fprintf(stderr, "\n\n");
+    exit(2);
     }
 
-/*
-    filesize = najinsize();
-
-
-    if (filesize == 0)
+	
+	a = fgetc(naji_input2);
+	if (a == EOF)
     {
     fprintf(stderr, "\n\nError, empty file.\n\n");
     exit(1);
     }
+	else
+	{
+		najinclose();
+		
+		naji_input2 = fopen(namein2, "rb");
 
-*/
+		if (naji_input2 == NULL)
+		{
+		fprintf(stderr, "\n\nError, cannot open second input file: %s", namein2);
+		perror(" "); fprintf(stderr, "\n\n");
+		exit(2);
+		}
+	
+	}
 
-/* NOTE: empty file checks have been disabled in this version
-         because it falsely reports large files as being empty
-*/
+	
+	
+	
 }
+
 
 
 void najout(char *nameout)
@@ -646,3 +691,120 @@ unsigned long howlong;
 	naji_lines_free(buffer, howmany);
 }
 
+
+
+int return_random(int max)
+{
+int random_number;
+int limit;
+
+	limit = RAND_MAX - RAND_MAX % max;
+	do random_number = rand(); while (random_number >= limit);
+
+return random_number % max;
+}
+
+
+void shuffle_int_array(int *array, int size)
+{
+int a;
+int b;
+int c;
+
+  size--;
+  
+  srand(time(NULL));
+  
+  for (a=size; a>0; a--)
+  {
+    b = return_random(a + 1);
+    c = array[b];
+    array[b] = array[a];
+    array[a] = c;
+  }
+
+}
+
+
+void naji_lines_random_print(char **buffer, int howmany)
+{
+unsigned long i = 0; 
+int *vektor = NULL;
+
+vektor = (int *) malloc(howmany * sizeof (int));
+exitnull(vektor)
+
+for (i=0; i<howmany; i++)
+vektor[i] = i;
+
+shuffle_int_array(vektor, howmany);
+
+for (i=0; i<howmany; i++)
+printf("%s", buffer[vektor[i]]);
+
+free(vektor);
+vektor = NULL;
+}
+
+
+void rndlines(char *namein)
+{
+char **buffer = NULL;
+unsigned long howmany;
+unsigned long howlong;
+
+	howmany = howl(namein);
+	howlong = longl(namein);
+	
+	howlong += 3;
+	howmany ++;
+	
+	buffer = naji_lines_alloc(howmany, howlong);
+
+	naji_lines_load(namein, buffer, howmany, howlong);
+
+	naji_lines_random_print(buffer, howmany);
+
+	naji_lines_free(buffer, howmany);
+}
+
+
+void najifgets(char *buf, int size, FILE *input)
+{
+int a;
+int i=0;
+
+    while(1)
+    {
+    
+        a = fgetc(naji_input);
+
+        if (a == EOF)
+		{
+		buf[i] = '\0';
+		return;
+		}
+		
+		if (i == size)
+        {
+		buf[i+1] = '\0';
+		return;
+		}
+
+        if (a == '\n')
+        {
+		buf[i]   = '\n';
+		buf[i+1] = '\0';
+        return;
+        }
+        else
+		{
+        buf[i] = a;
+		buf[i+1] = '\0';
+        }
+		
+		i++;
+    
+    }
+
+}

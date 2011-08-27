@@ -23,7 +23,7 @@
 
 #include "libnaji.h"
 
-#define NAJITOOL_MAX_COMMANDS 213
+#define NAJITOOL_MAX_COMMANDS 214
 
 extern const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS];
 

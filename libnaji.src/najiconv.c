@@ -391,25 +391,37 @@ najoutclose();
 }
 
 
-
-
-/* reverses every line in a file */
-/* note: this has a bug which i should fix later */
-/* the last line doesn't get reversed propally */
 void revlines(char *namein, char *nameout)
 {
-char buffer[1000];
+unsigned long int longest_line;
+char *buffer = NULL;
+
+longest_line = longl(namein);
+
+buffer = (char *) malloc(longest_line * sizeof (char) + 2);
+exitnull(buffer);
 
 najin(namein);
 najout(nameout);
 
-  while (!feof(naji_input))
+longest_line++;
+
+  while (1)
   {
-  fgets(buffer, 990, naji_input);
+  if (feof(naji_input))
+  break;
+  
+
+  najifgets(buffer, longest_line, naji_input);
+  
   sreverse(buffer);
-  fputs(buffer, naji_output);
+
+  fprintf(naji_output, "%s", buffer);
   }
 
+free(buffer);
+buffer = NULL;
+ 
 najinclose();
 najoutclose();
 }

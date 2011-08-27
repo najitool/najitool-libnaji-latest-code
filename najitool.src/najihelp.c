@@ -1273,6 +1273,13 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 },
 
 {
+"rndlines",
+"randomizes/shuffles every line in a text file and displays it to the screen",
+"<input text file>",
+"tipofday.txt"
+},
+
+{
 "rndtsout",
 "puts random text characters to the standard output\n"
 "(usually the screen) at the size you specify.",

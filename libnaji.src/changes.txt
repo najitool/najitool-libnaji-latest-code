@@ -14,3 +14,6 @@ added sortlast - NECDET COKYAZICI
 added lineback - NECDET COKYAZICI
 added longline - NECDET COKYAZICI
 added howline  - NECDET COKYAZICI
+added rndlines - NECDET COKYAZICI
+fixed revlines - NECDET COKYAZICI
+fixed sreverse - NECDET COKYAZICI
