@@ -47,6 +47,7 @@ unsigned long int naji_max_unsigned_long_int = 0;
 const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "8bit256",
 "addim",
+"addline",
 "allbmp16",
 "allfiles",
 "arab2eng",
@@ -347,7 +348,6 @@ int main(int argc, char *argv[])
 unsigned int repeat=0;
 unsigned long int size=0;
 unsigned long int size2=0;
-char *end;
 char **tags;
 int i;
 int a;
@@ -922,7 +922,7 @@ chchar(argv[2], argv[3], argv[4][0], argv[5][0]);
 end_cmd()
 
 begin_cmd("filechop", 6)
-filechop( (strtol(argv[2], &end, 0)), argv[3], argv[4], argv[5]);
+filechop( (strtol(argv[2], NULL, 0)), argv[3], argv[4], argv[5]);
 end_cmd()
         
 begin_cmd("putlines", 6)
@@ -930,8 +930,8 @@ putlines(argv[2], argv[3], argv[4], argv[5]);
 end_cmd()
 
 begin_cmd("copyoffs", 6)
-size  = strtoul(argv[3], &end, 0);
-size2 = strtoul(argv[4], &end, 0);
+size  = strtoul(argv[3], NULL, 0);
+size2 = strtoul(argv[4], NULL, 0);
 copyoffs(argv[2], size, size2, argv[5]);
 end_cmd()
 
@@ -939,7 +939,9 @@ begin_cmd("istrael", 6)
 istrael(argv[2], atoi(argv[3]), argv[4], argv[5]);
 end_cmd()
 
-
+begin_cmd("addline", 6)
+addline(argv[2], argv[3], argv[4], strtoul(argv[5], NULL, 0));
+end_cmd()
 
 
 begin_cmd("bremline", 5)
@@ -1007,14 +1009,14 @@ repcharp(argv[2], argv[3], repeat);
 end_cmd()
 
 begin_cmd("coffset", 5)
-size  = strtoul(argv[3], &end, 0);
-size2 = strtoul(argv[4], &end, 0);
+size  = strtoul(argv[3], NULL, 0);
+size2 = strtoul(argv[4], NULL, 0);
 coffset(argv[2], size, size2);
 end_cmd()
 
 begin_cmd("dumpoffs", 5)
-size  = strtoul(argv[3], &end, 0);
-size2 = strtoul(argv[4], &end, 0);
+size  = strtoul(argv[3], NULL, 0);
+size2 = strtoul(argv[4], NULL, 0);
 dumpoffs(argv[2], size, size2);
 end_cmd()
 
@@ -1255,12 +1257,12 @@ bin2hexi(argv[2], argv[3]);
 end_cmd()
 
 begin_cmd("rndbfile", 4)
-size = strtoul(argv[3], &end, 0);
+size = strtoul(argv[3], NULL, 0);
 rndbfile(argv[2], size);
 end_cmd()
 
 begin_cmd("rndtfile", 4)
-size = strtoul(argv[3], &end, 0);
+size = strtoul(argv[3], NULL, 0);
 rndtfile(argv[2], size);
 end_cmd()
 
@@ -1583,12 +1585,12 @@ end_cmd()
 
 
 begin_cmd("rndbsout", 3)
-size = strtoul(argv[2], &end, 0);
+size = strtoul(argv[2], NULL, 0);
 rndbsout(size);
 end_cmd()
 
 begin_cmd("rndtsout", 3)
-size = strtoul(argv[2], &end, 0);
+size = strtoul(argv[2], NULL, 0);
 rndtsout(size);
 end_cmd()
 

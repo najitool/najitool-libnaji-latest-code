@@ -403,7 +403,7 @@ void add_entry_html(char *entry);
 void add_entry_html_email(char *entry);
 void add_entry_html_link(char *entry);
 void addim(int max_times);
-
+void addline(char *namein, char *nameout, char *text_to_add, unsigned long line_number);
 
 /* WARNING: be very careful with this */
 /* function, it makes a lot of files  */

@@ -1907,3 +1907,88 @@ najin(namein);
 najinclose();
 najoutclose();
 }
+
+
+void addline(char *namein, char *nameout, char *text_to_add, unsigned long line_number)
+{
+int a;
+unsigned long i=0;
+
+najin(namein);
+najout(nameout);
+
+
+
+    if (line_number == 1)
+	{
+	fprintf(naji_output, "%s\n", text_to_add);
+	
+		while (1)
+		{
+			a = fgetc(naji_input);
+
+				if (a == EOF)
+				break;
+	
+				fputc(a, naji_output);
+		}
+
+		
+		if (a == EOF)
+		{
+			najinclose();
+			najoutclose();
+			return;
+		}
+	
+	}
+	
+	
+	line_number--;
+
+	while (1)
+	{
+		a = fgetc(naji_input);
+	
+		if (a == EOF)
+		{
+		if (i == (line_number - 2))
+		fprintf(naji_output, "%s\n", text_to_add);
+		
+		break;
+		}
+	
+		fputc(a, naji_output);
+
+		if (a == '\n')
+		i++;
+
+		if (i == line_number)
+		{
+			fprintf(naji_output, "%s\n", text_to_add);
+			break;
+		}
+	
+	
+	}
+
+		if (a == EOF)
+		{
+			najinclose();
+			najoutclose();
+			return;
+		}
+	
+		while (1)
+		{
+			a = fgetc(naji_input);
+
+				if (a == EOF)
+				break;
+	
+				fputc(a, naji_output);
+		}
+
+najinclose();
+najoutclose();
+}

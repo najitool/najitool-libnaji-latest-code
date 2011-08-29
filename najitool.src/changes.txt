@@ -17,3 +17,4 @@ added howline  - NECDET COKYAZICI
 added rndlines - NECDET COKYAZICI
 fixed revlines - NECDET COKYAZICI
 fixed sreverse - NECDET COKYAZICI
+added addline  - NECDET COKYAZICI

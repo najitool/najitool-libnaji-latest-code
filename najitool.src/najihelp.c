@@ -50,6 +50,12 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 "12"
 },
 
+{
+"addline",
+"add new line with the specified text at the specified line position.",
+"<input text file> <output file> <text> <line position>",
+"main.c hello.c 'printf(\"Hello World\");' 10"
+},
 
 {
 "allbmp16",

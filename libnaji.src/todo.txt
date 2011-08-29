@@ -33,8 +33,6 @@ delafel - delete everything after the specified line position in every line.
 
 delbfel - delete everything before the specified line position in every line.
 
-addline - add new line with the specified text at the specified line pos.
-
 replacel - replaces line with the specified text at the specified line pos.
 
 removel - remove specified line.
@@ -86,8 +84,9 @@ stairway - makes a stairway out of the characters of the files.
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Messy Ideas for next generation najitool, being able to combine multiple commands into one, and easily being able to specify simpler from a drop box.
+///////////////////////////////////////////////////////////////////////////////
+Messy Ideas for next generation najitool, being able to combine multiple
+commands into one, and easily being able to specify simpler from a drop box.
 
 
 Action:             From                      To:               Option:
@@ -133,7 +132,7 @@ Random
 Swap Character Range
 String
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -234,10 +233,6 @@ uplinem  - like merge line but merges with same file but the first
            or second side is upper case
 
 lowlinem - like above but lower case
-
-sort1st  - sort acording to the first part of the string of each line
-
-sortlast - sort according to the last part of the string of each line
 
 wordlist - a word list generator, takes 3 parameters,
            characters, length of string, and output file.
