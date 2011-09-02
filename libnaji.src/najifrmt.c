@@ -1992,3 +1992,148 @@ najout(nameout);
 najinclose();
 najoutclose();
 }
+
+
+
+void removel(char *namein, char *nameout, unsigned long line_number)
+{
+int a;
+unsigned long i=0;
+
+najin(namein);
+najout(nameout);
+
+
+    if (line_number == 1)
+	{
+	
+		while (1)
+		{
+			a = fgetc(naji_input);
+
+				if (a == '\n')
+				{
+					a = fgetc(naji_input);
+					fputc(a, naji_output);
+				}
+							
+				if (a == EOF)
+				break;
+			
+				else
+				{
+			
+					while (1)
+					{
+						a = fgetc(naji_input);
+
+						if (a == EOF)
+						break;
+						else
+						fputc(a, naji_output);
+					}
+
+			
+			
+				}
+	
+
+		}
+
+		
+		if (a == EOF)
+		{
+			najinclose();
+			najoutclose();
+			return;
+		}
+	
+	}
+
+
+	line_number--;
+	
+
+	while (1)
+	{
+		a = fgetc(naji_input);
+		
+		if (a == EOF)
+		break;
+
+		if (a == '\n')
+		i++;
+
+		if (i != line_number)
+		fputc(a, naji_output);
+
+		else
+		{
+		
+			while (1)
+			{
+			a = fgetc(naji_input);
+			
+			if ( (a == '\r') || (a == '\n')  || (a == EOF) )
+			break;
+			}
+			
+		if ( (a == '\r') || (a == '\n')  || (a == EOF) )
+		break;
+		}
+	}
+
+		if (a == EOF)
+		{
+			najinclose();
+			najoutclose();
+			return;
+		}
+		
+		if (a != '\r')
+		fputc(a, naji_output);		
+		
+	
+		while (1)
+		{
+			a = fgetc(naji_input);
+
+			if (a == EOF)
+			break;
+	
+			fputc(a, naji_output);
+		}
+
+najinclose();
+najoutclose();
+}
+
+void spyramid(char *str)
+{
+unsigned long i=0;
+unsigned long x=0;
+unsigned long len = 0;
+
+len = strlen(str);
+
+	for (x=0; x<len; x++)
+	{
+		for (i=0; i<x; i++)
+		{
+		fputc(str[i], stdout);
+		}
+	
+		fputc('\n', stdout);
+	}
+
+	for (x=0; x<len; x++)
+	{
+		for (i=0; i<len-x; i++)
+		{
+		fputc(str[i], stdout);
+		}
+
+		fputc('\n', stdout);
+	}
+
+}

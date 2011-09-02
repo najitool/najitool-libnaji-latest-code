@@ -1208,6 +1208,13 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 },
 
 {
+"removel",
+"remove the specified line and all its line contents.",
+"<input text file> <output file> <line number>",
+"todo.txt done.txt 10"
+},
+
+{
 "repcat",
 "repeats each character in a file the\n"
 "number of times you specify to the screen.",
@@ -1500,6 +1507,20 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 "changes everything else to space character.",
 "<input file> <output file>",
 "todo.txt roro.txt"
+},
+
+{
+"spyramid",
+"Makes a pyramid out of the specified string (text).\n"
+"That is to say, give it the text hello and it makes\n"
+"something like:\n"
+"n\n"
+"ne\n"
+"new\n"
+"ne\n"
+"n",
+"<text>",
+"hello"
 },
 
 {

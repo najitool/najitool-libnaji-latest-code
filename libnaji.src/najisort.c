@@ -257,7 +257,9 @@ int sortflag;
 int readforsort(FILE * sourcefile, FILE * destfile,
 struct najiline **pplines, struct najiline **pplineend, char *lastchar)
 {
-struct najiline line, *pline, *plines;
+struct najiline line;
+struct najiline *pline = NULL;
+struct najiline *plines = NULL;
 char current;
 char previous = ' ';
 int linecharnb = 0;
@@ -297,7 +299,7 @@ long filecharnb = 0;
 
   plines = malloc(sizeof(line) * linenb);
 
-  if (pline == NULL)
+  if (plines == NULL)
   {
 
     fprintf(stderr, "Error allocating %d bytes of memory.",

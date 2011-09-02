@@ -193,6 +193,7 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "rcharvar",
 "rcvfiles",
 "remline",
+"removel",
 "repcat",
 "repcatpp",
 "repchar",
@@ -232,6 +233,7 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "sortlast",
 "sp2ce2sp",
 "sp2re2sp",
+"spyramid",
 "strachar",
 "strbchar",
 "strbline",
@@ -346,8 +348,6 @@ if (argc == minargs) {
 int main(int argc, char *argv[])
 {
 unsigned int repeat=0;
-unsigned long int size=0;
-unsigned long int size2=0;
 char **tags;
 int i;
 int a;
@@ -930,9 +930,7 @@ putlines(argv[2], argv[3], argv[4], argv[5]);
 end_cmd()
 
 begin_cmd("copyoffs", 6)
-size  = strtoul(argv[3], NULL, 0);
-size2 = strtoul(argv[4], NULL, 0);
-copyoffs(argv[2], size, size2, argv[5]);
+copyoffs(argv[2], strtoul(argv[3], NULL, 0), strtoul(argv[4], NULL, 0), argv[5]);
 end_cmd()
 
 begin_cmd("istrael", 6)
@@ -1009,15 +1007,11 @@ repcharp(argv[2], argv[3], repeat);
 end_cmd()
 
 begin_cmd("coffset", 5)
-size  = strtoul(argv[3], NULL, 0);
-size2 = strtoul(argv[4], NULL, 0);
-coffset(argv[2], size, size2);
+coffset(argv[2], strtoul(argv[3], NULL, 0), strtoul(argv[4], NULL, 0));
 end_cmd()
 
 begin_cmd("dumpoffs", 5)
-size  = strtoul(argv[3], NULL, 0);
-size2 = strtoul(argv[4], NULL, 0);
-dumpoffs(argv[2], size, size2);
+dumpoffs(argv[2], strtoul(argv[3], NULL, 0), strtoul(argv[4], NULL, 0));
 end_cmd()
 
 begin_cmd("bin2c", 5)
@@ -1098,6 +1092,11 @@ end_cmd()
 begin_cmd("istreml", 5)
 istreml(argv[2], argv[3], argv[4]);
 end_cmd()
+
+begin_cmd("removel", 5)
+removel(argv[2], argv[3], strtoul(argv[4], NULL, 0));
+end_cmd()
+
 
 
 
@@ -1257,13 +1256,11 @@ bin2hexi(argv[2], argv[3]);
 end_cmd()
 
 begin_cmd("rndbfile", 4)
-size = strtoul(argv[3], NULL, 0);
-rndbfile(argv[2], size);
+rndbfile(argv[2], strtoul(argv[3], NULL, 0));
 end_cmd()
 
 begin_cmd("rndtfile", 4)
-size = strtoul(argv[3], NULL, 0);
-rndtfile(argv[2], size);
+rndtfile(argv[2], strtoul(argv[3], NULL, 0));
 end_cmd()
 
 begin_cmd("skipcat", 4)
@@ -1585,13 +1582,11 @@ end_cmd()
 
 
 begin_cmd("rndbsout", 3)
-size = strtoul(argv[2], NULL, 0);
-rndbsout(size);
+rndbsout(strtoul(argv[2], NULL, 0));
 end_cmd()
 
 begin_cmd("rndtsout", 3)
-size = strtoul(argv[2], NULL, 0);
-rndtsout(size);
+rndtsout(strtoul(argv[2], NULL, 0));
 end_cmd()
 
 begin_cmd("patch", 3)
@@ -1673,6 +1668,9 @@ begin_cmd("rndlines", 3)
 rndlines(argv[2]);
 end_cmd()
 
+begin_cmd("spyramid", 3)
+spyramid(argv[2]);
+end_cmd()
 
 
     } /* if (argc >= 2) */
