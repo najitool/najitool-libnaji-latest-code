@@ -1,7 +1,7 @@
 
 
   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-   najitool GUI 0.3.0.0, najitool 0.8.3, libnaji 0.6.3
+   najitool GUI 0.3.0.0, najitool 0.8.4, libnaji 0.6.4
   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   Credits: In order of contributing to project najitool
 

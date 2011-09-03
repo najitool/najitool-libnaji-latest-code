@@ -5,7 +5,7 @@
 /* naji 16x16x16 BMP (device independent bitmap) generator functions */
 
 /* this  .c  file is a part */
-/* of libnaji version 0.6.3 */
+/* of libnaji version 0.6.4 */
 
 /* libnaji is based on   */
 /* the original najitool */
