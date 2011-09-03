@@ -724,6 +724,7 @@ void repcatpp(char *namein, unsigned int start);
 void repchar(char *namein, char *nameout, unsigned int repeat);
 void repcharp(char *namein, char *nameout, unsigned int start);
 void reperr(unsigned int repeat);
+void replacel(char *namein, char *nameout, char *str, unsigned long line_number);
 int return_random(int max);
 void revcat(char *namein);
 void revlines(char *namein, char *nameout);

@@ -198,6 +198,7 @@ const char * najitool_valid_commands[NAJITOOL_MAX_COMMANDS] = {
 "repcatpp",
 "repchar",
 "repcharp",
+"replacel",
 "revcat",
 "revlines",
 "rmunihtm",
@@ -939,6 +940,10 @@ end_cmd()
 
 begin_cmd("addline", 6)
 addline(argv[2], argv[3], argv[4], strtoul(argv[5], NULL, 0));
+end_cmd()
+
+begin_cmd("replacel", 6)
+replacel(argv[2], argv[3], argv[4], strtoul(argv[5], NULL, 0));
 end_cmd()
 
 

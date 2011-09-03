@@ -1925,7 +1925,7 @@ najout(nameout);
 	
 		while (1)
 		{
-			a = fgetc(naji_input);
+				a = fgetc(naji_input);
 
 				if (a == EOF)
 				break;
@@ -1999,60 +1999,53 @@ void removel(char *namein, char *nameout, unsigned long line_number)
 {
 int a;
 unsigned long i=0;
+int has_nl = NAJI_FALSE;
 
 najin(namein);
 najout(nameout);
 
-
-    if (line_number == 1)
+	if (line_number == 1)
 	{
 	
 		while (1)
 		{
 			a = fgetc(naji_input);
 
-				if (a == '\n')
-				{
-					a = fgetc(naji_input);
-					fputc(a, naji_output);
-				}
-							
 				if (a == EOF)
 				break;
-			
+					
+				else if (a == '\n')
+				has_nl = NAJI_TRUE;
+				
 				else
 				{
 			
-					while (1)
+					if (has_nl == NAJI_TRUE)
 					{
-						a = fgetc(naji_input);
+							while (1)
+							{
+								a = fgetc(naji_input);
 
-						if (a == EOF)
-						break;
-						else
-						fputc(a, naji_output);
+								if (a == EOF)
+								break;
+							
+								else
+								fputc(a, naji_output);
+							}
+
 					}
-
-			
 			
 				}
 	
 
 		}
 
-		
-		if (a == EOF)
-		{
-			najinclose();
-			najoutclose();
-			return;
-		}
-	
+	najinclose();
+	najoutclose();
+	return;
 	}
 
-
 	line_number--;
-	
 
 	while (1)
 	{
@@ -2136,4 +2129,148 @@ len = strlen(str);
 		fputc('\n', stdout);
 	}
 
+}
+
+
+
+void replacel(char *namein, char *nameout, char *str, unsigned long line_number)
+{
+int a;
+unsigned long i=0;
+int has_nl = NAJI_FALSE;
+int isdos = NAJI_FALSE;
+
+najin(namein);
+najout(nameout);
+
+
+	if (line_number == 1)
+	{
+	
+		while (1)
+		{
+			a = fgetc(naji_input);
+
+				if (a == EOF)
+				{
+					if (has_nl == NAJI_FALSE)
+					fprintf(naji_output, "%s", str);
+				
+				break;
+				}
+		
+			
+				else if (a == '\n')
+				{
+					fprintf(naji_output, "\n%s\n", str);
+					has_nl = NAJI_TRUE;
+				}
+				
+				else
+				{
+			
+					if (has_nl == NAJI_TRUE)
+					{
+							while (1)
+							{
+								a = fgetc(naji_input);
+
+								if (a == EOF)
+								break;
+							
+								else
+								fputc(a, naji_output);
+							}
+
+					}
+			
+				}
+	
+
+		}
+
+	najinclose();
+	najoutclose();
+	return;
+	}
+
+	line_number--;
+	
+
+	while (1)
+	{
+		a = fgetc(naji_input);
+		
+		if (a == EOF)
+		break;
+
+		if (a == '\n')
+		i++;
+
+		if (i != line_number)
+		fputc(a, naji_output);
+
+
+		else
+		{
+		
+			while (1)
+			{
+			a = fgetc(naji_input);
+			
+			if (a == '\r')
+			{
+			isdos = NAJI_TRUE;
+			break;
+			}
+			
+			if ((a == '\n')  || (a == EOF) )
+			break;
+			}
+			
+		if ( (a == '\r') || (a == '\n')  || (a == EOF) )
+		break;
+		}
+
+	}
+
+	
+	if (a == EOF)
+	{
+	if (isdos == NAJI_TRUE)
+	fprintf(naji_output, "\n\r%s", str);
+	else
+	fprintf(naji_output, "\n%s", str);
+	
+	najinclose();
+	najoutclose();
+	return;
+	}
+	
+			
+	if (a != '\r')
+	{
+	fprintf(naji_output, "\n%s\n", str);
+	}
+	
+	else if (a == '\n')
+	{
+	fprintf(naji_output, "\n\r%s\n\r", str);
+	}
+
+	while (1)
+	{
+		a = fgetc(naji_input);
+
+		if (a == EOF)
+		break;
+	
+		fputc(a, naji_output);
+	}
+
+	
+		
+	
+najinclose();
+najoutclose();
 }

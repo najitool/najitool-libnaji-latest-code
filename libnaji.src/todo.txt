@@ -33,8 +33,6 @@ delafel - delete everything after the specified line position in every line.
 
 delbfel - delete everything before the specified line position in every line.
 
-replacel - replaces line with the specified text at the specified line pos.
-
 xcopyoff - copy excluding offset.
 
 xcoffset - cat excluding offset.

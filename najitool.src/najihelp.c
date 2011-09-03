@@ -1249,6 +1249,13 @@ struct najihelp helpitems[NAJITOOL_MAX_COMMANDS] = {
 },
 
 {
+"replacel",
+"replaces specified line contents with the specified text.",
+"<input text file> <output file> <new line text> <line number>",
+"version1.txt version2.txt \"version v2\" 10"
+},
+
+{
 "revcat",
 "shows a file reversed to the screen.",
 "<input file>",

@@ -20,3 +20,4 @@ fixed sreverse - NECDET COKYAZICI
 added addline  - NECDET COKYAZICI
 added removel  - NECDET COKYAZICI
 added spyramid - NECDET COKYAZICI
+added replacel - NECDET COKYAZICI
