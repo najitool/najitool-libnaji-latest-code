@@ -5,8 +5,8 @@
 
            included in:
 
-          najitool 0.8.4
-           libnaji 0.6.4
+          najitool 0.8.5
+           libnaji 0.6.5
 	  naji_gui 0.3.0.0 FINAL
 
      Written by NECDET COKYAZICI
@@ -17,6 +17,50 @@
 najitool: search najitool valid command array to see if an
 incomplete invalid command is a part of an existing valid
 command and display them as suggestions.
+
+rsort - reverse sort
+
+rsortlast - reverse sort last
+
+remrepl - remove repeated lines
+
+casemstr - case magic string, emple bellow
+Ecere
+eCere
+ecEre
+eceRe
+ecerE
+eceRe
+ecEre
+eCere
+Ecere
+
+ofswpcas - offset swap case
+
+offsetlc - make offset lowcase
+
+offsetuc - make offset uppercase
+
+lpswpcas - every line position offset swap case
+
+lpofflc - every line position make offset lowcase
+
+lpoffuc - every line position make offset uppercase
+
+hrefiles - makes files out of hrefs in html files.
+
+copyfapp - copy file appending to itself the number of times you specify
+
+rjoin - like mjoin but does random order
+
+xml2csv
+xml2json
+csv2xml
+csv2json
+json2csv
+json2xml
+user-specified-custom-delimited-sv2all-above
+
 
 
 New Commands todo:
